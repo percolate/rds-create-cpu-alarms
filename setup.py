@@ -1,3 +1,6 @@
+from setuptools import setup
+
+
 setup(
     name='rds-create-cpu-alarms',
     version='1.1',
