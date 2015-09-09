@@ -28,7 +28,7 @@ def get_rds_instances():
     Returns:
         (list) List of valid state RDS instances
     """
-    rds = boto.rds2.connect_to_region()
+    rds = boto.connect_rds2()
     response = rds.describe_db_instances()
     rds_instances = (response[u'DescribeDBInstancesResponse']
                              [u'DescribeDBInstancesResult']
@@ -108,7 +108,7 @@ def main():
         DEBUG = True
 
     rds_instances = get_rds_instances()
-    aws_cw_connect = boto.ec2.cloudwatch.connect_to_region()
+    aws_cw_connect = boto.connect_cloudwatch()
     alarms_to_create = get_cpuutilization_alarms_to_create(
         rds_instances, aws_cw_connect)
 
