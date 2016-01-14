@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """create-cpu-alarms
 
-Script used to create a over 80 pct. CPUUtilization alarm
+Script used to create a over 50 pct. CPUUtilization alarm
 in AWS CloudWatch for all RDS instances
 
 Usage:
@@ -87,7 +87,7 @@ def get_cpuutilization_alarms_to_create(rds_instances,
             namespace=u'AWS/RDS',
             metric=u'CPUUtilization', statistic='Average',
             comparison=u'>',
-            threshold=80,
+            threshold=50,
             period=60, evaluation_periods=50,
             alarm_actions=[u'arn:aws:sns:us-west-1:667005031541:ops'],
             dimensions={u'DBInstanceIdentifier':
