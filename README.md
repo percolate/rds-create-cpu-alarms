@@ -4,17 +4,17 @@
 [![codecov.io](http://codecov.io/github/percolate/rds-create-cpu-alarms/coverage.svg?branch=master)](http://codecov.io/github/percolate/rds-create-cpu-alarms?branch=master)
 
 Automate the creation of RDS cpu Alarms.
-The `Low-cpu` lower-bound limit in the script is 50%, but this can be altered.
 
 # Quick Start
 ```bash
 """rds-create-cpu-alarms
 
-Script used to create a over 50 pct. CPUUtilization alarm
-in AWS CloudWatch for all RDS instances
+Script used to create CPUUtilization alarms in AWS CloudWatch
+for all RDS instances.
+A upper-limit threshold needs to be defined.
 
 Usage:
-    create-cpu-alarms [options]
+    create-cpu-alarms [options]  <threshold>
     create-cpu-alarms -h | --help
 
 Options:
