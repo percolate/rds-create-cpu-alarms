@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 """create-cpu-alarms
 
-Script used to create a over 80 pct. CPUUtilization alarm
-in AWS CloudWatch for all RDS instances
+Script used to create CPUUtilization alarms in AWS CloudWatch
+for all RDS instances.
+A upper-limit threshold needs to be defined.
 
 Usage:
-    create-cpu-alarms [options]
+    create-cpu-alarms [options] <threshold>
     create-cpu-alarms -h | --help
 
 Options:
@@ -60,12 +61,14 @@ def get_existing_cpuutilization_alarm_names(aws_cw_connect):
 
 
 def get_cpuutilization_alarms_to_create(rds_instances,
+                                        threshold,
                                         aws_cw_connect):
     """
     Creates a CPUUtilization alarm for all RDS instances
 
     Args:
-        rds_instances (list) ist of all RDS instances
+        rds_instances (list) List of all RDS instances
+        threshold (int) The upper limit after which alarm activates
         aws_cw_connect (CloudWatchConnection)
 
     Returns:
@@ -74,6 +77,7 @@ def get_cpuutilization_alarms_to_create(rds_instances,
     assert isinstance(rds_instances, list)
     assert isinstance(aws_cw_connect,
                       boto.ec2.cloudwatch.CloudWatchConnection)
+    assert isinstance(threshold, int)
 
     alarms_to_create = set()
     existing_alarms = get_existing_cpuutilization_alarm_names(aws_cw_connect)
@@ -87,7 +91,7 @@ def get_cpuutilization_alarms_to_create(rds_instances,
             namespace=u'AWS/RDS',
             metric=u'CPUUtilization', statistic='Average',
             comparison=u'>',
-            threshold=80,
+            threshold=threshold,
             period=60, evaluation_periods=50,
             alarm_actions=[u'arn:aws:sns:us-west-1:667005031541:ops'],
             dimensions={u'DBInstanceIdentifier':
@@ -110,7 +114,7 @@ def main():
     rds_instances = get_rds_instances()
     aws_cw_connect = boto.connect_cloudwatch()
     alarms_to_create = get_cpuutilization_alarms_to_create(
-        rds_instances, aws_cw_connect)
+        rds_instances, int(args['<threshold>']), aws_cw_connect)
 
     if alarms_to_create:
         if DEBUG:
