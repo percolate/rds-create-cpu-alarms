@@ -26,10 +26,10 @@ DEBUG = False
 
 def get_rds_instances(region):
     """
+    Retrieves the list of all RDS instances
+
     Args:
         region (str)
-
-    Retrieves the list of all RDS instances
 
     Returns:
         (list) List of valid state RDS instances
@@ -40,7 +40,8 @@ def get_rds_instances(region):
     response = rds.describe_db_instances()
     rds_instances = (response[u'DescribeDBInstancesResponse']
                              [u'DescribeDBInstancesResult']
-                             [u'DBInstances'])
+                             [u'DBInstances']
+                     )
     return rds_instances
 
 
@@ -106,7 +107,9 @@ def get_cpuutilization_alarms_to_create(rds_instances,
             period=60, evaluation_periods=50,
             alarm_actions=[sns_topic_arn],
             dimensions={u'DBInstanceIdentifier':
-                        instance[u'DBInstanceIdentifier']})
+                        instance[u'DBInstanceIdentifier']
+                        }
+        )
 
         if cpu_utilization_alarm.name not in existing_alarms:
             alarms_to_create.add(cpu_utilization_alarm)
