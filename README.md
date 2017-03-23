@@ -14,8 +14,8 @@ for all RDS instances.
 A upper-limit threshold needs to be defined.
 
 Usage:
-    create-cpu-alarms [options]  <threshold>
-    create-cpu-alarms -h | --help
+    rds-create-cpu-alarms [options] <threshold> <sns_topic_arn> <region>
+    rds-create-cpu-alarms -h | --help
 
 Options:
     -h --help   Show this screen.
