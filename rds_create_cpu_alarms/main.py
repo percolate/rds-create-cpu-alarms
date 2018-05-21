@@ -141,11 +141,11 @@ def main():
     if alarms_to_create:
         if DEBUG:
             for alarm in alarms_to_create:
-                print 'DEBUG:', alarm
+                print('DEBUG:', alarm)
         else:
-            print 'New RDS CPUUtilization Alarms created:'
+            print('New RDS CPUUtilization Alarms created:')
             for alarm in alarms_to_create:
-                print alarm
+                print(alarm)
                 aws_cw_connect.create_alarm(alarm)
 
 

@@ -4,7 +4,8 @@ from rds_create_cpu_alarms.constants import VERSION
 setup(
     name='rds-create-cpu-alarms',
     version=VERSION,
-    description='AWS Cloudwatch RDS Tool for creating CPUUtilization Metric Alarms',
+    description=('AWS Cloudwatch RDS Tool for creating CPUUtilization Metric '
+                 'Alarms'),
     url='https://github.com/percolate/rds-create-cpu-alarms',
     author='Mihailo Pavlisin',
     author_email='mihailo@percolate.com',
