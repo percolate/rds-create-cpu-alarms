@@ -42,7 +42,7 @@ jobs:
 
 workflows:
   version: 2
-  phaser:
+  rds-create-cpu-alarms:
     jobs:
       - mdl
       - flake8-py2
