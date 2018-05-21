@@ -19,7 +19,7 @@ import boto.rds2
 from docopt import docopt
 from boto.ec2.cloudwatch import MetricAlarm
 
-from constants import VERSION
+from .constants import VERSION
 
 DEBUG = False
 
