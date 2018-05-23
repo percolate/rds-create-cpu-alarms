@@ -1,5 +1,9 @@
 *.pyc
 /rds-create-cpu-alarms.egg-info/
 
+# Release Files
+/dist/
+/rds_create_cpu_alarms.egg-info/
+
 # pyenv
 /.python-version
