@@ -5,7 +5,8 @@
 
 Automate the creation of RDS cpu Alarms.
 
-# Quick Start
+## Quick Start
+
 ```bash
 """rds-create-cpu-alarms
 
@@ -23,7 +24,8 @@ Options:
 """
 ```
 
-# Install
+## Install
+
 ```bash
-$ pip install rds-create-cpu-alarms
+pip install rds-create-cpu-alarms
 ```
